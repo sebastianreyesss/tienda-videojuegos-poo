@@ -1,0 +1,28 @@
+class Juego:
+    def __init__(self, titulo, plataforma):
+        self.titulo = titulo
+        self.plataforma = plataforma
+        self.disponible = True
+
+    def prestar(self):
+        if self.disponible:
+            self.disponible = False
+            return True
+        return False
+
+juegos = [
+    Juego("FIFA 25", "PC"), Juego("FIFA 25", "Xbox"), 
+    Juego("Zelda", "Nintendo Switch"), Juego("Astro Bot", "PS5")
+]
+
+def realizar_prestamo(titulo, plataforma):
+    for juego in juegos:
+        if juego.titulo.lower() == titulo.lower() and juego.plataforma.lower() == plataforma.lower():
+            if juego.prestar():
+                return f"Préstamo realizado: {titulo} para {plataforma}"
+            return f"El juego {titulo} para {plataforma} no está disponible"
+    return f"El juego {titulo} para {plataforma} no se encuentra disponible"
+
+print(realizar_prestamo("FIFA 25", "PC"))
+print(realizar_prestamo("FIFA 25", "PC"))
+print(realizar_prestamo("Halo", "Xbox"))
